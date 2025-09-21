@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Inclusive D&D Character Generator</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="topbar" role="banner">
+    <h1>Inclusive D&D Character Generator</h1>
+    <nav class="topnav" role="navigation" aria-label="Main">
+      <button id="themeToggle" aria-label="Toggle theme">🌙</button>
+      <button id="viewFavsNav" aria-label="Open favorites">★ Favorites</button>
+    </nav>
+  </header>
+
+  <main class="container" role="main">
+    <aside class="options card" aria-labelledby="optionsTitle">
+      <h2 id="optionsTitle">Options</h2>
+
+      <label>
+        Name (optional)
+        <input id="name" type="text" placeholder="Enter a name or leave blank to randomize" />
+      </label>
+
+      <label>
+        Pronouns
+        <select id="pronouns">
+          <option value="they/them">They/Them</option>
+          <option value="she/her">She/Her</option>
+          <option value="he/him">He/Him</option>
+          <option value="custom">Custom...</option>
+        </select>
+      </label>
+
+      <label id="customPronounsWrap" style="display:none;">
+        Custom pronouns
+        <input id="customPronouns" type="text" placeholder="e.g., xe/xem" />
+      </label>
+
+      <label>
+        Gender identity (optional)
+        <input id="gender" type="text" placeholder="Optional gender identity" />
+      </label>
+
+      <label>
+        Stat generation method
+        <select id="statMethod" aria-label="Stat generation method">
+          <option value="4d6">4d6 drop lowest</option>
+          <option value="standard">Standard Array (15,14,13,12,10,8)</option>
+          <option value="pointbuy">Point Buy (27 pts)</option>
+        </select>
+      </label>
+
+      <div class="actionRow">
+        <button id="generate" class="primary">Generate</button>
+        <button id="saveFav" title="Save the last generated character">Save Favorite</button>
+        <button id="viewFavs">Favorites</button>
+        <button id="clear">Clear</button>
+      </div>
+
+      <div class="shortcuts muted">
+        <div><strong>Shortcuts</strong></div>
+        <div>Ctrl/⌘ + R — Reroll</div>
+        <div>Tab — Navigate controls</div>
+      </div>
+    </aside>
+
+    <section id="characterCard" class="card character" aria-live="polite">
+      <h2>Character</h2>
+
+      <div id="empty" class="empty">Press Generate to create a character</div>
+
+      <div id="result" class="result hidden" tabindex="-1">
+        <div class="topRow">
+          <div class="titleBlock">
+            <h3 id="charName">Name</h3>
+            <p id="subInfo" class="muted">Pronouns · Gender · Alignment · Age</p>
+          </div>
+
+          <div class="smallActions" role="toolbar" aria-label="Character actions">
+            <button id="copyBtn">Copy</button>
+            <button id="printBtn">Print</button>
+            <button id="saveFavInline" title="Save character">Save</button>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="box">
+            <strong>Background</strong>
+            <div id="background" class="largeText"></div>
+            <small id="traits" class="muted"></small>
+          </div>
+
+          <div class="box">
+            <strong>Race</strong>
+            <div id="race" class="largeText"></div>
+            <small id="size" class="muted"></small>
+            <small id="age" class="muted"></small>
+          </div>
+
+          <div class="box">
+            <strong>Class</strong>
+            <div id="class" class="largeText"></div>
+            <small id="subclass" class="muted"></small>
+          </div>
+
+          <div class="box wide" aria-labelledby="abilityTitle">
+            <h4 id="abilityTitle">Ability Scores</h4>
+
+            <div class="abilityGrid" role="table" aria-label="Ability scores table">
+              <div class="abilityHeader" role="row">
+                <div role="columnheader">Ability</div>
+                <div role="columnheader">Score</div>
+                <div role="columnheader">Modifier</div>
+              </div>
+
+              <div id="abilityRows" role="rowgroup" class="abilityRows"></div>
+            </div>
+
+            <div class="muted" id="avg">Average: —</div>
+            <div class="muted" id="mods">Modifiers: —</div>
+            <div class="muted" id="method">Method: —</div>
+          </div>
+
+          <div class="box">
+            <strong>Languages</strong>
+            <div id="languages"></div>
+          </div>
+
+          <div class="box">
+            <strong>Proficiencies</strong>
+            <div id="proficiencies"></div>
+            <small id="doubleProfs" class="muted"></small>
+          </div>
+
+          <div class="box wide">
+            <strong>Equipment & Money</strong>
+            <div id="equipment"></div>
+            <div id="money" class="muted"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="favoritesView" class="hidden">
+        <h3>Favorites</h3>
+        <div id="favList" aria-live="polite"></div>
+        <div style="margin-top:0.5rem">
+          <button id="backFromFavs">Back</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <small>Inclusive, accessible, and easy to use. Favorites are stored locally on this server.</small>
+  </footer>
+
+  <script>
+    const PRONOUN_SELECT = document.getElementById('pronouns');
+    const CUSTOM_WRAP = document.getElementById('customPronounsWrap');
+
+    PRONOUN_SELECT.addEventListener('change', () => {
+      CUSTOM_WRAP.style.display = PRONOUN_SELECT.value === 'custom' ? 'block' : 'none';
+    });
+  </script>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
