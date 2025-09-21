@@ -1,0 +1,255 @@
+:root{
+  --bg:#f6f7fb;
+  --card:#ffffff;
+  --muted:#6b7280;
+  --accent:#7c3aed;
+  --text:#0f172a;
+  --focus:#ffdd57;
+  --input-bg: rgba(0,0,0,0.03);
+  --input-border: rgba(15,23,42,0.06);
+}
+[data-theme="dark"]{
+  --bg:#0b1020;
+  --card:#0f1728;
+  --muted:#9aa4bf;
+  --accent:#9b6bff;
+  --text:#e6eef8;
+  --focus:#ffd86b;
+  --input-bg: rgba(255,255,255,0.03);
+  --input-border: rgba(255,255,255,0.06);
+}
+
+/* Reset / base */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  margin:0;
+  background:linear-gradient(180deg, var(--bg), #fff);
+  color:var(--text);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  line-height:1.35;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Topbar / layout */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:1rem 1.25rem;
+  gap:1rem;
+}
+.topbar h1{margin:0; font-size:1.125rem}
+.topnav{display:flex; gap:0.5rem}
+
+/* Main grid */
+.container{
+  display:grid;
+  gap:1rem;
+  grid-template-columns:320px 1fr;
+  padding:1rem;
+  flex:1;
+}
+@media (max-width:900px){
+  .container{grid-template-columns:1fr; padding:0.75rem}
+}
+
+/* Cards */
+.card{
+  background:var(--card);
+  border-radius:12px;
+  padding:1rem;
+  box-shadow:0 6px 18px rgba(2,6,23,0.06);
+  border:1px solid rgba(15,23,42,0.04);
+}
+
+/* Options column */
+.options label{display:block; margin-bottom:0.5rem; font-size:0.95rem}
+.options input,
+.options select,
+.options textarea,
+.options button{
+  width:100%;
+  padding:0.55rem;
+  margin-top:0.25rem;
+  border-radius:8px;
+  border:1px solid var(--input-border);
+  background:var(--input-bg);
+  color:var(--text);
+  caret-color:var(--text);
+  font-size:0.95rem;
+}
+.options select, .options button{appearance:none}
+
+/* Action buttons */
+.primary{
+  background:linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 80%, black 20%));
+  color:white;
+  padding:0.55rem 0.9rem;
+  border-radius:8px;
+  border:none;
+  font-weight:600;
+}
+.actionRow{display:flex; gap:0.5rem; margin-top:0.5rem; flex-wrap:wrap}
+.actionRow button{min-width:96px}
+
+/* Character card */
+.character .empty{padding:2rem; text-align:center; color:var(--muted)}
+.titleBlock h3{margin:0; font-size:1.25rem}
+.titleBlock .muted{margin-top:6px}
+
+.smallActions button{
+  margin-left:0.5rem;
+  padding:0.45rem 0.6rem;
+  border-radius:8px;
+  border:1px solid var(--input-border);
+  background:var(--input-bg);
+  cursor:pointer;
+  color:var(--text);
+}
+
+/* Grid for character details */
+.grid{
+  display:grid;
+  gap:0.75rem;
+  grid-template-columns:repeat(2,1fr);
+  margin-top:0.75rem;
+}
+@media (max-width:900px){ .grid{grid-template-columns:1fr} }
+
+.box{
+  padding:0.75rem;
+  background:linear-gradient(180deg, rgba(124,58,237,0.04), rgba(124,58,237,0.01));
+  border-radius:8px;
+}
+.box.wide{grid-column:1/-1}
+
+.muted{color:var(--muted); font-size:0.9rem}
+.largeText{font-size:1.05rem; font-weight:600; margin-top:6px}
+
+/* Ability table (labeled rows) */
+.abilityGrid{
+  margin-top:8px;
+  border-radius:8px;
+  overflow:hidden;
+  background:rgba(0,0,0,0.02);
+  border:1px solid rgba(0,0,0,0.03);
+}
+.abilityHeader,
+.abilityRow{
+  display:grid;
+  grid-template-columns:1fr 84px 84px;
+  gap:8px;
+  align-items:center;
+  padding:8px 12px;
+}
+.abilityHeader{
+  background:rgba(0,0,0,0.03);
+  font-weight:700;
+  font-size:0.95rem;
+}
+.abilityRow{background:transparent; border-top:1px solid rgba(0,0,0,0.03)}
+.abilityRow:nth-child(even){ background:rgba(0,0,0,0.01) }
+
+.abilityName{font-weight:600}
+.abilityScore{font-size:1.05rem; text-align:center; font-weight:700}
+.abilityMod{font-size:0.95rem; text-align:center; color:var(--muted)}
+
+/* Small helper elements */
+.scores{display:flex; gap:0.5rem; flex-wrap:wrap}
+.scores > div{background:rgba(0,0,0,0.03); padding:0.4rem 0.6rem; border-radius:6px; min-width:54px; text-align:center}
+.result.hidden{display:none}
+
+/* Favorites / misc */
+.favCard{margin-bottom:0.6rem}
+.hidden{display:none}
+
+/* Footer */
+.footer{padding:0.5rem 1rem; text-align:center; font-size:0.85rem; color:var(--muted)}
+
+/* Focus / accessibility improvements */
+:focus{
+  outline:3px solid color-mix(in srgb, var(--focus) 70%, var(--accent) 30%);
+  outline-offset:2px;
+  border-radius:8px;
+}
+button:focus, input:focus, select:focus, textarea:focus, [tabindex]:focus{
+  outline:3px solid color-mix(in srgb, var(--focus) 70%, var(--accent) 30%);
+  outline-offset:2px;
+  border-radius:8px;
+}
+
+/* Buttons unified appearance */
+button{
+  background:transparent;
+  border:1px solid var(--input-border);
+  padding:6px 10px;
+  border-radius:8px;
+  cursor:pointer;
+  color:var(--text);
+}
+button.primary{background:linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 80%, black 20%)); color:#fff; border:none}
+
+/* Ensure select/options are readable */
+select, option{
+  color:var(--text);
+  background:var(--card);
+}
+
+/* Placeholder colors */
+input::placeholder, textarea::placeholder{
+  color: color-mix(in srgb, var(--muted) 70%, var(--text) 30%);
+  opacity:1;
+}
+
+/* Dark-mode specific tweaks for contrast */
+[data-theme="dark"] body{
+  background:linear-gradient(180deg, var(--bg), #05060a);
+}
+[data-theme="dark"] .card{
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+  border:1px solid rgba(255,255,255,0.03);
+}
+[data-theme="dark"] .abilityGrid{ background: rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03) }
+[data-theme="dark"] .abilityHeader{ background: rgba(255,255,255,0.02) }
+[data-theme="dark"] .abilityRow:nth-child(even){ background: rgba(255,255,255,0.01) }
+
+/* Inputs and controls in dark theme */
+input, textarea, select, button{
+  color:var(--text);
+  background:var(--input-bg);
+  border-color:var(--input-border);
+}
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select,
+[data-theme="dark"] button{
+  background:var(--input-bg);
+  border-color:var(--input-border);
+  color:var(--text);
+}
+
+/* Small actions contrast in dark mode */
+[data-theme="dark"] .smallActions button{
+  background: rgba(255,255,255,0.03);
+  border-color: rgba(255,255,255,0.06);
+  color:var(--text);
+}
+
+/* Slightly larger interactive targets for touch */
+button, .options input, .options select, .options button{
+  min-height:40px;
+}
+
+/* Reduce visual noise for print */
+@media print{
+  body{background: #fff; color:#000}
+  .topbar, .actionRow, .smallActions, #themeToggle, #viewFavsNav{display:none}
+  .card{box-shadow:none; border:none}
+  .abilityHeader, .abilityRow{page-break-inside:avoid}
+}
