@@ -1,70 +1,616 @@
 {
-  "backgrounds": ["Acolyte", "Sage", "Criminal", "Soldier", "Entertainer", "Hermit", "Guild Artisan", "Folk Hero", "Noble", "Urchin", "Investigator", "Archivist", "Shipwright", "Cartographer"],
-  "races": ["Human", "High Elf", "Wood Elf", "Drow", "Halfling", "Lightfoot Halfling", "Stout Halfling", "Half-Elf", "Half-Orc", "Tiefling", "Dragonborn", "Gnome", "Forest Gnome", "Rock Gnome", "Aasimar", "Goliath", "Kenku", "Tabaxi"],
-  "classes": ["Fighter", "Rogue", "Wizard", "Sorcerer", "Cleric", "Barbarian", "Ranger", "Paladin", "Warlock", "Bard", "Monk", "Druid"],
-  "alignments": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
-  "pronouns": [{"label":"They/Them","value":"they/them"},{"label":"She/Her","value":"she/her"},{"label":"He/Him","value":"he/him"},{"label":"Custom","value":"custom"}],
-  "languages": ["Common", "Elvish", "Dwarvish", "Halfling", "Infernal", "Abyssal", "Gnomish", "Goblin", "Orcish", "Sylvan", "Primordial", "Draconic", "Celestial", "Undercommon", "Thieves' Cant"],
-  "skills": ["Athletics","Acrobatics","Sleight of Hand","Stealth","Arcana","History","Investigation","Nature","Religion","Animal Handling","Insight","Medicine","Perception","Survival","Persuasion","Deception","Intimidation"],
-  "equipment": ["Explorer's Pack","Dungeoneer's Pack","Light Crossbow","Longsword","Shortsword","Shield","Spellbook","Holy Symbol","Thieves' Tools","Crowbar","Rope (50 ft)","Traveler's Clothes"],
-  "ideals": ["Greater good","Personal freedom","Greed","Balance","Knowledge","Power","Honor"],
-  "bonds": ["My family","A mentor","A lost love","My sworn oath","My home village","A debt","An old patron"],
-  "flaws": ["I judge too quickly","I have a weakness for vices","I hide secrets","I act rashly","I am distrustful"],
-  "personality_traits": ["Brave","Cautious","Curious","Stoic","Charismatic","Reserved","Hot-headed","Playful","Methodical"],
-  "subclasses": {
-    "Barbarian": ["Path of the Totem Warrior","Path of the Berserker"],
-    "Sorcerer": ["Wild Magic","Draconic Bloodline"],
-    "Wizard": ["Evocation","Divination","Abjuration","Conjuration"],
-    "Fighter": ["Champion","Battle Master","Eldritch Knight"],
-    "Rogue": ["Thief","Assassin","Arcane Trickster"],
-    "Cleric": ["Life Domain","Light Domain","War Domain"],
-    "Paladin": ["Oath of Devotion","Oath of Vengeance","Oath of Ancients"]
-  },
-  "race_languages": {
-    "High Elf": ["Elvish"],
-    "Wood Elf": ["Elvish"],
-    "Drow": ["Elvish"],
-    "Tiefling": ["Infernal"],
-    "Dragonborn": ["Draconic"],
-    "Half-Orc": ["Orcish"],
-    "Gnome": ["Gnomish"]
-  },
-  "race_height_weight_mods": {
-    "Halfling": [-12, -30],
-    "Lightfoot Halfling": [-12, -30],
-    "Stout Halfling": [-12, -30],
-    "High Elf": [0, -5],
-    "Wood Elf": [-2, -10],
-    "Drow": [-3, -15],
-    "Half-Elf": [-1, -10],
-    "Half-Orc": [4, 20],
-    "Dragonborn": [6, 30],
-    "Tiefling": [0, -5],
-    "Human": [0,0],
-    "Gnome": [-10, -25],
-    "Aasimar": [2, 5],
-    "Goliath": [10, 50],
-    "Kenku": [-8, -20],
-    "Tabaxi": [-4, -5]
-  },
-  "age_ranges": {
-    "Human": [16,80],
-    "High Elf": [100,750],
-    "Wood Elf": [100,700],
-    "Drow": [90,600],
-    "Halfling": [20,150],
-    "Lightfoot Halfling": [20,150],
-    "Stout Halfling": [20,150],
-    "Half-Elf": [20,180],
-    "Half-Orc": [14,80],
-    "Tiefling": [16,120],
-    "Dragonborn": [15,80],
-    "Gnome": [40,500],
-    "Forest Gnome": [40,500],
-    "Rock Gnome": [40,500],
-    "Aasimar": [18,300],
-    "Goliath": [12,90],
-    "Kenku": [10,60],
-    "Tabaxi": [8,80]
-  }
+  "backgrounds": [
+    "Acolyte",
+    "Charlatan",
+    "Criminal",
+    "Entertainer",
+    "Folk Hero",
+    "Guild Artisan",
+    "Hermit",
+    "Noble",
+    "Outlander",
+    "Sage",
+    "Sailor",
+    "Soldier",
+    "Urchin",
+    "Archaeologist",
+    "Far Traveler",
+    "Inheritor",
+    "Knight",
+    "Mercenary Veteran",
+    "Urban Bounty Hunter",
+    "Cloistered Scholar",
+    "Courtier",
+    "Faction Agent",
+    "Anthropologist",
+    "Haunted One"
+  ],
+  "races": [
+    "Human",
+    "High Elf",
+    "Wood Elf",
+    "Drow",
+    "Halfling",
+    "Lightfoot Halfling",
+    "Stout Halfling",
+    "Half-Elf",
+    "Half-Orc",
+    "Tiefling",
+    "Dragonborn",
+    "Gnome",
+    "Forest Gnome",
+    "Rock Gnome",
+    "Aasimar",
+    "Goliath",
+    "Kenku",
+    "Tabaxi",
+    "Triton",
+    "Firbolg",
+    "Genasi",
+    "Hobgoblin",
+    "Goblin",
+    "Orc",
+    "Kobold",
+    "Lizardfolk",
+    "Yuan-Ti Pureblood",
+    "Warforged",
+    "Changeling",
+    "Shifter",
+    "Eladrin",
+    "Kalastar",
+    "Leonin",
+    "Satyr",
+    "Verdan",
+    "Bugbear",
+    "Minotaur"
+  ],
+  "classes": [
+    "Barbarian",
+    "Bard",
+    "Cleric",
+    "Druid",
+    "Fighter",
+    "Monk",
+    "Paladin",
+    "Ranger",
+    "Rogue",
+    "Sorcerer",
+    "Warlock",
+    "Wizard",
+    "Artificer",
+    "Blood Hunter"
+  ],
+  "alignments": [
+    "Lawful Good",
+    "Neutral Good",
+    "Chaotic Good",
+    "Lawful Neutral",
+    "True Neutral",
+    "Chaotic Neutral",
+    "Lawful Evil",
+    "Neutral Evil",
+    "Chaotic Evil"
+  ],
+  "pronouns": [
+    {
+      "label": "They/Them",
+      "value": "they/them"
+    },
+    {
+      "label": "She/Her",
+      "value": "she/her"
+    },
+    {
+      "label": "He/Him",
+      "value": "he/him"
+    },
+    {
+      "label": "Custom",
+      "value": "custom"
+    }
+  ],
+  "languages": [
+    "Common",
+    "Elvish",
+    "Dwarvish",
+    "Halfling",
+    "Infernal",
+    "Abyssal",
+    "Gnomish",
+    "Goblin",
+    "Orcish",
+    "Sylvan",
+    "Primordial",
+    "Draconic",
+    "Celestial",
+    "Undercommon",
+    "Thieves' Cant",
+    "Deep Speech",
+    "Aquan",
+    "Ignan",
+    "Terran",
+    "Auran",
+    "Giant",
+    "Gnoll",
+    "Druidic",
+    "Telepathic",
+    "Trollish",
+    "Ettin",
+    "Merchant Trade",
+    "Courtly",
+    "Seafarer Cant",
+    "Modronic",
+    "Forged Speech",
+    "Rune-scribed",
+    "Kobold"
+  ],
+  "skills": [
+    "Acrobatics",
+    "Animal Handling",
+    "Arcana",
+    "Athletics",
+    "Deception",
+    "History",
+    "Insight",
+    "Intimidation",
+    "Investigation",
+    "Linguistics",
+    "Medicine",
+    "Nature",
+    "Perception",
+    "Performance",
+    "Persuasion",
+    "Religion",
+    "Sleight of Hand",
+    "Stealth",
+    "Survival"
+  ],
+  "equipment": [
+    {
+      "name": "Lute",
+      "type": "single",
+      "allow_duplicate": true
+    },
+    {
+      "name": "Lyre",
+      "type": "single",
+      "allow_duplicate": true
+    },
+    {
+      "name": "Horn",
+      "type": "single",
+      "allow_duplicate": true
+    },
+    {
+      "name": "Longsword",
+      "type": "single",
+      "allow_duplicate": true
+    },
+    {
+      "name": "Shortsword",
+      "type": "single",
+      "allow_duplicate": true
+    },
+    {
+      "name": "Shield",
+      "type": "single",
+      "allow_duplicate": true
+    },
+    {
+      "name": "Light Crossbow",
+      "type": "single",
+      "allow_duplicate": true
+    },
+    {
+      "name": "Spellbook",
+      "type": "single"
+    },
+    {
+      "name": "Thieves' Tools",
+      "type": "single"
+    },
+    {
+      "name": "Traveler's Clothes",
+      "type": "single",
+      "allow_duplicate": true
+    },
+    {
+      "name": "Javelin",
+      "type": "single",
+      "allow_duplicate": true
+    },
+    {
+      "name": "Rope (50 ft)",
+      "type": "single",
+      "allow_duplicate": true
+    },
+    {
+      "name": "Rations",
+      "type": "consumable",
+      "min_qty": 1,
+      "max_qty": 7,
+      "notes": "Days of rations"
+    },
+    {
+      "name": "Dungeoneer's Pack",
+      "type": "bundle",
+      "notes": "Tools for dungeon exploration",
+      "contents": [
+        "Backpack",
+        "Crowbar",
+        "Hammer",
+        "Pitons",
+        "Torches (10)",
+        "Rations (5 days)"
+      ]
+    },
+    {
+      "name": "Explorer's Pack",
+      "type": "bundle",
+      "notes": "General outdoor gear for long treks",
+      "contents": [
+        "Backpack",
+        "Bedroll",
+        "Waterskin",
+        "Tinderbox",
+        "Rations (7 days)",
+        "Map case",
+        "Trail rations (2)",
+        "Hunting trap",
+        "Flint and steel"
+      ]
+    },
+    {
+      "name": "Scholar's Pack",
+      "type": "bundle",
+      "notes": "For academics, researchers, and mages",
+      "contents": [
+        "Satchel",
+        "Ink (1 oz)",
+        "Ink pen",
+        "Parchment (10 sheets)",
+        "Quill",
+        "Small knife",
+        "Bottle of sand",
+        "Book of notes",
+        "Magnifying lens"
+      ]
+    },
+    {
+      "name": "Burglar's Pack",
+      "type": "bundle",
+      "notes": "Compact tools and concealables for stealthy work",
+      "contents": [
+        "Backpack",
+        "Crowbar",
+        "Padded rope (50 ft)",
+        "Dark hooded cloak",
+        "Small mirror on a stick",
+        "Lockpicks",
+        "Thieves' tools",
+        "Sack (large)",
+        "Candles (5)"
+      ]
+    },
+    {
+      "name": "Priest's Pack",
+      "type": "bundle",
+      "notes": "Items for a traveling cleric or acolyte",
+      "contents": [
+        "Backpack",
+        "Holy symbol",
+        "Incense (10 sticks)",
+        "Vestments",
+        "Lamp",
+        "Oil (flask)",
+        "Rations (5 days)",
+        "Blanket",
+        "Prayer book"
+      ]
+    },
+    {
+      "name": "Entertainer's Pack",
+      "type": "bundle",
+      "notes": "Props and tools for performers",
+      "contents": [
+        "Backpack",
+        "Costume (2)",
+        "Musical instrument (choice)",
+        "Face paint",
+        "Rations (3 days)",
+        "Clothes for audience",
+        "Crowd pleasers (small props)",
+        "Perfume vial",
+        "Coin pouch"
+      ]
+    },
+    {
+      "name": "Diplomat's Pack",
+      "type": "bundle",
+      "notes": "Useful for envoys, negotiators, and courtiers",
+      "contents": [
+        "Fine clothes",
+        "Letter of introduction",
+        "Sealed wax and signet",
+        "Ink and paper",
+        "Small gift (wrapped)",
+        "Etiquette guide",
+        "Blank ledger",
+        "Travel tea set",
+        "Coin purse"
+      ]
+    },
+    {
+      "name": "Healer's Pack",
+      "type": "bundle",
+      "notes": "Medical tools and supplies for field care",
+      "contents": [
+        "Backpack",
+        "Bandages",
+        "Antiseptic salve",
+        "Herbal poultices (5)",
+        "Sutures and needles",
+        "Mortar and pestle",
+        "Shears",
+        "Vial of holy water",
+        "Rations (3 days)"
+      ]
+    },
+    {
+      "name": "Sailor's Pack",
+      "type": "bundle",
+      "notes": "Gear for life at sea",
+      "contents": [
+        "Backpack",
+        "Seaworthy cloak",
+        "Rations (7 days)",
+        "Rope (100 ft)",
+        "Grappling hook",
+        "Sextant or simple navigation tools",
+        "Lantern",
+        "Fishhooks and line",
+        "Small toolkit"
+      ]
+    },
+    {
+      "name": "Hunter's Pack",
+      "type": "bundle",
+      "notes": "Tools for tracking and field dressing",
+      "contents": [
+        "Backpack",
+        "Trail rations (3)",
+        "Hunting trap",
+        "Game bag",
+        "Skinning knife",
+        "Snares (3)",
+        "Camouflage netting",
+        "Water flask",
+        "Signal whistle"
+      ]
+    },
+    {
+      "name": "Investigator's Pack",
+      "type": "bundle",
+      "notes": "For detectives and archivists",
+      "contents": [
+        "Satchel",
+        "Notebook",
+        "Ink pen",
+        "Small hammer",
+        "Goggles",
+        "Lockpicks",
+        "Chalk",
+        "Measuring cord",
+        "Evidence bags"
+      ]
+    },
+    {
+      "name": "Cook's Pack",
+      "type": "bundle",
+      "notes": "Portable cooking kit and food prep tools",
+      "contents": [
+        "Small pot",
+        "Pan",
+        "Spices (small jar)",
+        "Knife",
+        "Cutting board",
+        "Charcoal pouch",
+        "Utensils",
+        "Rations (3 days)",
+        "Water skin"
+      ]
+    },
+    {
+      "name": "Herbalist's Pack",
+      "type": "bundle",
+      "notes": "For gathering and preparing plants",
+      "contents": [
+        "Satchel",
+        "Glass vials (6)",
+        "Pestle and mortar",
+        "Botany guide",
+        "Pruning shears",
+        "Small drying cloth",
+        "Herbal charts",
+        "Twine",
+        "Rations (2 days)"
+      ]
+    },
+    {
+      "name": "Tinkerer's Pack",
+      "type": "bundle",
+      "notes": "Basic tools and small parts for gadgeteers",
+      "contents": [
+        "Tool roll",
+        "Hammer and small anvil",
+        "Files",
+        "Screws and nails assortment",
+        "Wire and spring coil",
+        "Pliers",
+        "Soldering kit",
+        "Goggles",
+        "Scrap metal pieces"
+      ]
+    },
+    {
+      "name": "Longbow",
+      "type": "single",
+      "allow_duplicate": true
+    },
+    {
+      "name": "Shortbow",
+      "type": "single",
+      "allow_duplicate": true
+    },
+    {
+      "name": "Quarterstaff",
+      "type": "single",
+      "allow_duplicate": true
+    },
+    {
+      "name": "Dagger",
+      "type": "single",
+      "allow_duplicate": true
+    },
+    {
+      "name": "Handaxe",
+      "type": "single",
+      "allow_duplicate": true
+    },
+    {
+      "name": "Battleaxe",
+      "type": "single",
+      "allow_duplicate": true
+    },
+    {
+      "name": "Crossbow, Heavy",
+      "type": "single",
+      "allow_duplicate": true
+    },
+    {
+      "name": "Mace",
+      "type": "single",
+      "allow_duplicate": true
+    },
+    {
+      "name": "Greatsword",
+      "type": "single",
+      "allow_duplicate": true
+    },
+    {
+      "name": "Potion of Healing",
+      "type": "consumable",
+      "min_qty": 1,
+      "max_qty": 3,
+      "notes": "Restores health"
+    },
+    {
+      "name": "Potion of Greater Healing",
+      "type": "consumable",
+      "min_qty": 1,
+      "max_qty": 2,
+      "notes": "Restores more health"
+    },
+    {
+      "name": "Torch",
+      "type": "consumable",
+      "min_qty": 1,
+      "max_qty": 10,
+      "notes": "Provides light for 1 hour"
+    },
+    {
+      "name": "Grappling Hook",
+      "type": "single",
+      "allow_duplicate": true
+    },
+    {
+      "name": "Manacles",
+      "type": "single",
+      "allow_duplicate": true
+    },
+    {
+      "name": "Spyglass",
+      "type": "single",
+      "allow_duplicate": true
+    },
+    {
+      "name": "Bag of Holding",
+      "type": "single",
+      "allow_duplicate": false
+    },
+    {
+      "name": "Caltrops",
+      "type": "consumable",
+      "min_qty": 1,
+      "max_qty": 20
+    },
+    {
+      "name": "Holy Water",
+      "type": "consumable",
+      "min_qty": 1,
+      "max_qty": 5
+    }
+  ],
+  "personality_traits": [
+    "Quick to smile",
+    "Stoic and watchful",
+    "Hot-headed",
+    "Curious about everything",
+    "Slow to trust",
+    "Generous when able",
+    "Proud and formal",
+    "Kind but guarded",
+    "Always asks questions",
+    "Easily distracted by shiny things",
+    "Keeps meticulous notes",
+    "Loves storytelling",
+    "Fiercely loyal to friends",
+    "Tends to overthink",
+    "Always prepared",
+    "Prone to sarcasm",
+    "Easily inspired by beauty",
+    "Hates injustice"
+  ],
+  "ideals": [
+    "Honor",
+    "Freedom",
+    "Community",
+    "Knowledge",
+    "Power",
+    "Redemption",
+    "Mercy",
+    "Ambition",
+    "Innovation",
+    "Justice",
+    "Loyalty",
+    "Adventure",
+    "Creativity",
+    "Wisdom",
+    "Courage"
+  ],
+  "bonds": [
+    "A mentor I owe everything to",
+    "My family name",
+    "A debt I must repay",
+    "My homeland",
+    "A lost lover",
+    "A sacred relic",
+    "A childhood friend I can't forget",
+    "A family heirloom I protect",
+    "A sworn oath to a guild or faction",
+    "A mysterious stranger I must find",
+    "A promise I made that haunts me"
+  ],
+  "flaws": [
+    "I take unnecessary risks",
+    "I hold grudges",
+    "I lie to impress others",
+    "I have a weakness for gambling",
+    "I am easily manipulated",
+    "Fear of abandonment",
+    "Easily jealous",
+    "Obsessed with reputation",
+    "Can't resist a bet or gamble",
+    "Quick to anger"
+  ]
 }
